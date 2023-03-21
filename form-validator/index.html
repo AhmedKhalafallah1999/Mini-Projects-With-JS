@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validator</title>
+    <!-- Include CSS style -->
+    <link rel="stylesheet" href="style.css"></link>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="form">
+      <h1>Register with us</h1>
+      <form>
+        <div class="form-item">
+          <label>Username</label>
+          <input type="text" placeholder="Enter username" />
+          <small>Username must be at least 3 charecters</small>
+        </div>
+        <div class="form-item">
+          <label>Email</label>
+          <input type="email" placeholder="Enter email" />
+          <small>Email not valid</small>
+        </div>
+        <div class="form-item">
+          <label>Password</label>
+          <input type="password" placeholder="Enter password" />
+          <small>Password must be at least 6 charecters</small>
+        </div>
+        <div class="form-item">
+          <label>Confirm Password</label>
+          <input type="password" placeholder="Enter password again" />
+          <small>passwords do not match
+          </small>
+        </div>
+        <button id="submit" type="submit">Submit</button>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
