@@ -68,7 +68,7 @@ small {
 .form-item.error input {
   border-color: var(--error-color);
 }
-.form-control.error small {
+.form-item.error small {
   visibility: visible;
 }
 #submit {
