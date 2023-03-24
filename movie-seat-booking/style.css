@@ -1,19 +1,23 @@
-body {
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #242333;
-  color: white;
-  font-family: "Lato", sans-serif;
-}
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 * {
-  padding: 0;
-  margin: 0;
-  list-style: none;
   box-sizing: border-box;
 }
+
+body {
+  background-color: #242333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+.pick-container {
+  margin: 20px 0;
+}
+
 .pick-container select {
   background-color: #fff;
   border: 0;
@@ -25,12 +29,19 @@ body {
   -webkit-appearance: none;
   appearance: none;
 }
+.seats-container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
 .showCase {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
   display: flex;
   justify-content: space-between;
-  background-color: #777;
-  background: rgba(0, 0, 0, 0.1);
-  margin: 20px;
+
 }
 .showCase li {
   display: flex;
@@ -47,13 +58,9 @@ body {
   width: 100%;
   margin: 15px 0;
   transform: rotateX(-45deg);
-  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7); 
 }
 
-.seats-container {
-  perspective: 1000px;
-  margin-bottom: 30px;
-}
 .seat {
   background-color: #444451;
   height: 12px;
@@ -79,11 +86,15 @@ body {
   cursor: pointer;
   transform: scale(1.2);
 }
-.showcase .seat:not(.occupied):hover {
+.showCase .seat:not(.occupied):hover {
   cursor: default;
   transform: scale(1);
 }
 
 .row {
   display: flex;
+  
+}
+p.text span {
+  color: #6feaf6;
 }
