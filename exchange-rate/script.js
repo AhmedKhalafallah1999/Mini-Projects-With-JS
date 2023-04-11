@@ -1,32 +1,39 @@
-const currencyOne = document.getElementById("currency-one");
-const amountOne = document.getElementById("amount-one");
-const swap = document.getElementById("swap");
-const currencyTwo = document.getElementById("currency-two");
-const amountTwo = document.getElementById("amount-two");
-const rate2 = document.getElementById("rate");
+const currencyEl_one = document.getElementById('currency-one');
+const amountEl_one = document.getElementById('amount-one');
+const currencyEl_two = document.getElementById('currency-two');
+const amountEl_two = document.getElementById('amount-two');
 
-const calculate = () => {
-  const currency1 = currencyOne.value;
-  const currency2 = currencyTwo.value;
-  fetch(`https://api.exchangerate-api.com/v4/latest/${currency1}`)
-    .then((res) => res.json())
-    .then((data) => {
-      const rate = data.rates[currency2];
-      rate2.innerText = `1 ${currency1} = ${rate} ${currency2}`;
-      amountTwo.value = (amountOne.value * rate).toFixed(2);
+const rateEl = document.getElementById('rate');
+const swap = document.getElementById('swap');
+
+// Fetch exchange rates and update the DOM
+function caclulate() {
+  const currency_one = currencyEl_one.value;
+  const currency_two = currencyEl_two.value;
+
+  fetch(`https://api.exchangerate-api.com/v4/latest/${currency_one}`)
+    .then(res => res.json())
+    .then(data => {
+      // console.log(data);
+      const rate = data.rates[currency_two];
+
+      rateEl.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;
+
+      amountEl_two.value = (amountEl_one.value * rate).toFixed(2);
     });
-};
-const swapHandler = ()=>{
-  const currency1 = currencyOne.value;
-  const currency2 = currencyTwo.value;
-  currencyOne.value = currencyTwo.value;
-  currencyTwo.value = currency1;
-  calculate();
 }
-currencyOne.addEventListener("click", calculate);
-amountOne.addEventListener("input", calculate);
-currencyTwo.addEventListener("click", calculate);
-amountTwo.addEventListener("input", calculate);
-swap.addEventListener('click',swapHandler);
 
-calculate();
+// Event listeners
+currencyEl_one.addEventListener('change', caclulate);
+amountEl_one.addEventListener('input', caclulate);
+currencyEl_two.addEventListener('change', caclulate);
+amountEl_two.addEventListener('input', caclulate);
+
+swap.addEventListener('click', () => {
+  const temp = currencyEl_one.value;
+  currencyEl_one.value = currencyEl_two.value;
+  currencyEl_two.value = temp;
+  caclulate();
+});
+
+caclulate();
